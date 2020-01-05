@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+marbles-core = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
+flake8-docstrings = "*"
+tox = "*"
+tox-venv = "*"
+
+[packages]
+flake8 = "*"
+six = "*"
+
+[requires]
+python_version = "3.8"
