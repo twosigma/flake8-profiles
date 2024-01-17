@@ -38,8 +38,13 @@ class NoProfileTestCase(CommandRunningTestCase):
 
     def test_no_profile(self):
         self.assertNotEqual(0, self.returncode)
-        self.assertIn("Profile file config/notfound.conf not found",
-                      self.stderr)
+        self.assertIn(
+            (
+                f"The specified config file does not exist: config{os.sep}"
+                "notfound.conf"
+            ),
+            self.stdout,
+        )
 
 
 class DefaultProfileTestCase(CommandRunningTestCase):
@@ -48,7 +53,10 @@ class DefaultProfileTestCase(CommandRunningTestCase):
     env = {"FLAKE8_PROFILE_DIR": "config"}
 
     def test_default_profile_from_config(self):
-        self.assertIn("Loaded profile from config/default.conf", self.stderr)
+        self.assertIn(
+            f"Loaded profile from config{os.sep}default.conf",
+            self.stderr,
+        )
 
     def test_default_profile_finds_violations(self):
         self.assertNotEqual(0, self.returncode)
@@ -61,7 +69,10 @@ class ProfileFromCliTestCase(CommandRunningTestCase):
     env = {"FLAKE8_PROFILE_DIR": "config"}
 
     def test_profile_from_cli(self):
-        self.assertIn("Loaded profile from config/nodoc.conf", self.stderr)
+        self.assertIn(
+            f"Loaded profile from config{os.sep}nodoc.conf",
+            self.stderr,
+        )
 
     def test_nodoc_profile_finds_no_violations(self):
         self.assertEqual(0, self.returncode)
