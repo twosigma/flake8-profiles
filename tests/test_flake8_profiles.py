@@ -38,8 +38,10 @@ class NoProfileTestCase(CommandRunningTestCase):
 
     def test_no_profile(self):
         self.assertNotEqual(0, self.returncode)
-        self.assertIn("Profile file config/notfound.conf not found",
-                      self.stderr)
+        self.assertIn(
+            "The specified config file does not exist: config/notfound.conf",
+            self.stdout,
+        )
 
 
 class DefaultProfileTestCase(CommandRunningTestCase):
