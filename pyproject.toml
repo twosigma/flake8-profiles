@@ -26,6 +26,9 @@ dev = [
     "pytest",
     "sphinx",
     "sphinx_rtd_theme",
+    # Needed to make pip-compile generate pip-installable requirements.txt
+    "tomli",
+    
 ]
 
 [project.entry-points]
