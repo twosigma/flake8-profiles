@@ -32,4 +32,5 @@ dev = [
 "flake8.report" = { "CNF101" = "flake8_profiles:ProfilePlugin" }
 
 [tool.pip-tools]
+allow-unsafe = true
 generate-hashes = true
